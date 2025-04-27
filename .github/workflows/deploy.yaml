@@ -5,7 +5,7 @@ on:
     branches:
       - main  # sesuaikan dengan branch kamu
 
-jobs:
+jobs: 
   deploy:
     runs-on: ubuntu-latest
 
@@ -25,5 +25,7 @@ jobs:
         run: |
           aws s3 sync ./ s3://${{ secrets.S3_BUCKET_NAME }} \
             --delete \
-            --exclude ".git/*" \
             --exclude ".github/*"
+
+# --delete = Hapus file di bucket yang sudah tidak ada di project
+# --exclude ".github/*" = Abaikan semua folder .github/
