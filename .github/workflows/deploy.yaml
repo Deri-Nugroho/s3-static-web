@@ -21,6 +21,9 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sync files to S3
-        run: |
-          aws s3 sync ./ s3://${{ secrets.S3_BUCKET_NAME }} --delete --acl public-read --exclude ".git/*" --exclude ".github/*"
+- name: Upload ke S3
+  run: |
+    aws s3 sync ./ s3://${{ secrets.S3_BUCKET_NAME }} \
+      --delete \
+      --exclude ".git/*" \
+      --exclude ".github/*"
