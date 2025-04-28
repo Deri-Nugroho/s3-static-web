@@ -26,8 +26,6 @@ jobs:
           aws s3 sync ./ s3://${{ secrets.S3_BUCKET_NAME }} \
             --delete \
             --acl public-read
-            --exclude ".github/*" \
 
 # --delete = Hapus file di bucket yang sudah tidak ada di project
 # --acl public-read = mengatur ACLs file agar orang di internet bisa mengakses
-# --exclude ".github/*" = Abaikan semua folder .github/
